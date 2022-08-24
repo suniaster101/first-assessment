@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <style>
+      .section {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .avatar {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .avatar.sm {
+        width: 3rem;
+        height: 3rem;
+      }
+      .chat {
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin: 0.75rem 0rem;
+      }
+      .active-chat {
+        background-color: aliceblue;
+      }
+      .messages-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      #messages > li {
+        margin: 0.5rem;
+        display: flex;
+        justify-content: left;
+      }
+      #messages > .me {
+        justify-content: right;
+      }
+      #messages span{
+        background: #e4e8b6;
+        padding: 0.5rem;
+        border-radius: 0.75rem;
+      }
+      #messages > .me img{
+        display: block;
+        border-radius: 5px;
+        max-width: 20rem;
+        margin-bottom: 0.5rem;
+      }
+      #messages > .me span{
+        background: #F4F7C5;
+      }
+      .chat-input-group{
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 1rem;
+      }
+      .chat-input{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        border: none;
+        min-width: 30rem;
+      }
+      .chat-group{
+        position: relative;
+      }
+      .chat-actions{
+        cursor: pointer;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #A7C5EB;
+      }
+      .chat-actions input{
+        display: block;
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .send-message{
+        width: 3rem;
+        height: 3rem;
+        margin-left: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: #A7C5EB;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+        function sendMessage() {
+            var chatInput = document.getElementById('input');
+            var chatContainer =  document.getElementById('messages');
+
+            var item = document.createElement('li');
+            item.className = 'me';
+            item.innerHTML = `<span>${chatInput.value}</span>`;
+            chatContainer.appendChild(item);
+            
+            chatInput.value = '';
+        }
+    </script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <div class="chat-container">
+            <div class="row">
+              <div class="col-auto">
+                <div class="chat-list p-3">
+                  <div class="row align-items-center chat active-chat">
+                    <div class="col-auto">
+                      <img
+                        src="assets/images/violet.webp"
+                        class="avatar"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                    <div class="col">
+                      <p class="fs-6 fw-bold mb-1">Violet Evergarden</p>
+                      <p class="fs-6 text-muted mb-0">Lorem ipsum</p>
+                    </div>
+                  </div>
+                  <div class="row align-items-center chat">
+                    <div class="col-auto">
+                      <img
+                        src="assets/images/yukihira.jpg"
+                        class="avatar"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                    <div class="col">
+                      <p class="fs-6 fw-bold mb-1">Yukihira Soma</p>
+                      <p class="fs-6 text-muted mb-0">Lorem ipsum</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="messages-container">
+                  <div class="col-auto">
+                    <nav class="navbar navbar-expand-lg bg-light">
+                      <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                          <img
+                            src="assets/images/violet.webp"
+                            class="avatar sm"
+                            alt=""
+                            srcset=""
+                          />
+                          <span>Violet Evergarden</span>
+                        </a>
+                        <button
+                          class="navbar-toggler"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#navbarSupportedContent"
+                          aria-controls="navbarSupportedContent"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation"
+                        >
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div
+                          class="collapse navbar-collapse"
+                          id="navbarSupportedContent"
+                        >
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                          <form class="d-flex" role="search">
+                            <input
+                              class="form-control me-2"
+                              type="search"
+                              placeholder="Search"
+                              aria-label="Search"
+                            />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="45"
+                              fill="currentColor"
+                              class="bi bi-three-dots-vertical"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                              />
+                            </svg>
+                          </form>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                  <div class="col">
+                    <ul id="messages">
+                      <li><span>Is it lorem itsum ?</span></li>
+                      <li><span>dolor sit amet...</span></li>
+                      <li class="me"><span>exactly..</span></li>
+                      <li class="me">
+
+                        <span>
+                            <img src="assets/images/violet.webp" alt="" srcset="">
+                            I like it..
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-auto">
+                    <div class="chat-input-group">
+                        <div class="chat-group">
+                            <input type="text" name="text" placeholder="Type your message" id="input" class="chat-input">
+                            <div class="chat-actions">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
+                                    <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                                  </svg>
+                                  <input type="file" name="attachment" id="">
+                            </div>
+                        </div>
+                        <div class="send-message" onclick="sendMessage()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                              </svg>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
